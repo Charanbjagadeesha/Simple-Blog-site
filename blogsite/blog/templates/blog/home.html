@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .post {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post h2 {
+            color: #333;
+        }
+        .post p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .author {
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Blog</h1>
+    </header>
+    <div class="container">
+        {% for post in posts %}
+        <div class="post">
+            <h2>{{ post.title }}</h2>
+            <p class="author">By {{ post.author }} | {{ post.created_at|date:"F j, Y" }}</p>
+            <p>{{ post.content|truncatewords:50 }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
